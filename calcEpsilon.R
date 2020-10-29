@@ -24,7 +24,7 @@
 ###############################################################################################################
 ### METHOD
 ### Method is described in detail in 
-### Vingiani, F., Durighetto, N, Klaus, M., Schelker, J., Labasque, T. and Botter, W.: Evaluatingstream CO2 
+### Vingiani, F., Durighetto, N., Klaus, M., Schelker, J., Labasque, T. and Botter, G.: Evaluatingstream CO2 
 ### outgassing via Drifting and Anchored chambers:results of a flume experiment, for submission to Biogeosciences.
 ###  
 ### Code is based on methods in Zappa et al. 2003 and uses many improvements by Bluteau et al. 2011
@@ -53,96 +53,96 @@
 ###
 ###############################################################################################################
 ### INPUTS: 
-# ADV files (.dat and .hdr)
-# ADV geometry (roll, pitch and heading of sensor)
-# TransmitDepth		distance between water surface and ADV transmit transducer (m)
-# WaterWidth		stream width (m)
-# heading		ADV probe heading (degrees)
-# pitch			ADV probe pitch (degrees)
-# roll			ADV probe roll (degrees)
+# ADV files         (.dat and .hdr)
+# ADV geometry      (roll, pitch and heading of sensor)
+# TransmitDepth		  distance between water surface and ADV transmit transducer (m)
+# WaterWidth		    stream width (m)
+# heading		        ADV probe heading (degrees)
+# pitch			        ADV probe pitch (degrees)
+# roll			        ADV probe roll (degrees)
 ###############################################################################################################
 ### OUTPUTS:  
-# Variable name		Explanation
-# filename		Filename
-# DataTime		Date and time
-# VelocityRange		Vectrino setting of Velocity range (m/s)
-# TransmitLength	Vectrino setting of Transmit length (mm)
-# SamplingVolume	Vectrino setting of Sampling volume (mm)
-# Distance		Distance between sensor and "wall"
-# Temperature		Water temperature (dC)
-# VelocityScaling	Vectrino setting of Velocity scaling
+# Variable name		  Explanation
+# filename		      Filename
+# DataTime		      Date and time
+# VelocityRange		  Vectrino setting of Velocity range (m/s)
+# TransmitLength	  Vectrino setting of Transmit length (mm)
+# SamplingVolume	  Vectrino setting of Sampling volume (mm)
+# Distance		      Distance between sensor and "wall"
+# Temperature		    Water temperature (dC)
+# VelocityScaling	  Vectrino setting of Velocity scaling
 # CoordinateSystem	Coordinate system of data aquisition
-# WaterDepth		Water depth (m)
-# TKE			Turbulent kinetic energy (m2/s2)
-# Re			Reynolds number
-# Fr			Froude number
-# eD			Energy dissipation (by drag) (m2/s3)
-# eS			Energy dissipation (by shear) (m2/s3)
-# V			mean flow velocity in u direction (m/s)
-# signal.rat.X		signal to noise ratio for X direction
-# signal.rat.Y		signal to noise ratio for Y direction
-# signal.rat.Z1		signal to noise ratio for Z1 direction
-# signal.rat.Z2		signal to noise ratio for Z2 direction
-# correlation.X		correlation for X direction
-# correlation.Y		correlation for Y direction
-# correlation.Z1	correlation for Z1 direction
-# correlation.Z2	correlation for Z2 direction
-# FrozenTurb.u		Metric to test Frozen turbulence hypothesis (u direction)
-# FrozenTurb.v		Metric to test Frozen turbulence hypothesis (v direction)
-# FrozenTurb.w1		Metric to test Frozen turbulence hypothesis (w1 direction)
-# FrozenTurb.w2		Metric to test Frozen turbulence hypothesis (w2 direction)
-# propDespiked.u	Proportion of data removed by Despiking (u direction)
-# propDespiked.v	Proportion of data removed by Despiking (v direction)
-# propDespiked.w1	Proportion of data removed by Despiking (w1 direction)
-# propDespiked.w2	Proportion of data removed by Despiking (w2 direction)
-# sdVel.u		Standard deviation of velocity (u direction) (m/s)
-# sdVel.v		Standard deviation of velocity (v direction) (m/s)
-# sdVel.w1		Standard deviation of velocity (w1 direction) (m/s)
-# sdVel.w2		Standard deviation of velocity (w2 direction) (m/s)
-# epsilonLS:u		Least square estimate of TKE dissipation rate (m2/s3) (u direction); based on unfiltered spectrum
-# epsilonLS:v		Least square estimate of TKE dissipation rate (m2/s3) (v direction); based on unfiltered spectrum
-# epsilonLS:w1		Least square estimate of TKE dissipation rate (m2/s3) (w1 direction); based on unfiltered spectrum
-# epsilonLS:w2		Least square estimate of TKE dissipation rate (m2/s3) (w2 direction); based on unfiltered spectrum
-# epsilonMLE:u		Maximum Likelihood estimate of TKE dissipation rate (m2/s3) (u direction), mean; based on unfiltered spectrum
-# epsilonMLE:v		Maximum Likelihood estimate of TKE dissipation rate (m2/s3) (v direction), mean; based on unfiltered spectrum
-# epsilonMLE:w1		Maximum Likelihood estimate of TKE dissipation rate (m2/s3) (w1 direction), mean; based on unfiltered spectrum
-# epsilonMLE:w2		Maximum Likelihood estimate of TKE dissipation rate (m2/s3) (w2 direction), mean; based on unfiltered spectrum
-# epsilonMLElwr:u	Maximum Likelihood estimate of TKE dissipation rate (m2/s3) (u direction), lower boundary of 95% confidence interval; based on unfiltered spectrum
-# epsilonMLElwr:v	Maximum Likelihood estimate of TKE dissipation rate (m2/s3) (v direction),  lower boundary of 95% confidence interval; based on unfiltered spectrum
+# WaterDepth		    Water depth (m)
+# TKE			          Turbulent kinetic energy (m2/s2)
+# Re			          Reynolds number
+# Fr			          Froude number
+# eD			          Energy dissipation (by drag) (m2/s3)
+# eS			          Energy dissipation (by shear) (m2/s3)
+# V			            mean flow velocity in u direction (m/s)
+# signal.rat.X		  signal to noise ratio for X direction
+# signal.rat.Y		  signal to noise ratio for Y direction
+# signal.rat.Z1		  signal to noise ratio for Z1 direction
+# signal.rat.Z2		  signal to noise ratio for Z2 direction
+# correlation.X		  correlation for X direction
+# correlation.Y		  correlation for Y direction
+# correlation.Z1	  correlation for Z1 direction
+# correlation.Z2	  correlation for Z2 direction
+# FrozenTurb.u		  Metric to test Frozen turbulence hypothesis (u direction)
+# FrozenTurb.v		  Metric to test Frozen turbulence hypothesis (v direction)
+# FrozenTurb.w1		  Metric to test Frozen turbulence hypothesis (w1 direction)
+# FrozenTurb.w2		  Metric to test Frozen turbulence hypothesis (w2 direction)
+# propDespiked.u	  Proportion of data removed by Despiking (u direction)
+# propDespiked.v	  Proportion of data removed by Despiking (v direction)
+# propDespiked.w1 	Proportion of data removed by Despiking (w1 direction)
+# propDespiked.w2	  Proportion of data removed by Despiking (w2 direction)
+# sdVel.u		        Standard deviation of velocity (u direction) (m/s)
+# sdVel.v	          Standard deviation of velocity (v direction) (m/s)
+# sdVel.w1	        Standard deviation of velocity (w1 direction) (m/s)
+# sdVel.w2	      	Standard deviation of velocity (w2 direction) (m/s)
+# epsilonLS:u		    Least square estimate of TKE dissipation rate (m2/s3) (u direction); based on unfiltered spectrum
+# epsilonLS:v		    Least square estimate of TKE dissipation rate (m2/s3) (v direction); based on unfiltered spectrum
+# epsilonLS:w1		  Least square estimate of TKE dissipation rate (m2/s3) (w1 direction); based on unfiltered spectrum
+# epsilonLS:w2	    Least square estimate of TKE dissipation rate (m2/s3) (w2 direction); based on unfiltered spectrum
+# epsilonMLE:u		  Maximum Likelihood estimate of TKE dissipation rate (m2/s3) (u direction), mean; based on unfiltered spectrum
+# epsilonMLE:v		  Maximum Likelihood estimate of TKE dissipation rate (m2/s3) (v direction), mean; based on unfiltered spectrum
+# epsilonMLE:w1		  Maximum Likelihood estimate of TKE dissipation rate (m2/s3) (w1 direction), mean; based on unfiltered spectrum
+# epsilonMLE:w2		  Maximum Likelihood estimate of TKE dissipation rate (m2/s3) (w2 direction), mean; based on unfiltered spectrum
+# epsilonMLElwr:u	  Maximum Likelihood estimate of TKE dissipation rate (m2/s3) (u direction), lower boundary of 95% confidence interval; based on unfiltered spectrum
+# epsilonMLElwr:v 	Maximum Likelihood estimate of TKE dissipation rate (m2/s3) (v direction),  lower boundary of 95% confidence interval; based on unfiltered spectrum
 # epsilonMLElwr:w1	Maximum Likelihood estimate of TKE dissipation rate (m2/s3) (w1 direction),  lower boundary of 95% confidence interval; based on unfiltered spectrum
 # epsilonMLElwr:w2	Maximum Likelihood estimate of TKE dissipation rate (m2/s3) (w2 direction),  lower boundary of 95% confidence interval; based on unfiltered spectrum
-# epsilonMLEupr:u	Maximum Likelihood estimate of TKE dissipation rate (m2/s3) (u direction), upper boundary of 95% confidence interval; based on unfiltered spectrum
-# epsilonMLEupr:v	Maximum Likelihood estimate of TKE dissipation rate (m2/s3) (v direction),  upper boundary of 95% confidence interval; based on unfiltered spectrum
+# epsilonMLEupr:u	  Maximum Likelihood estimate of TKE dissipation rate (m2/s3) (u direction), upper boundary of 95% confidence interval; based on unfiltered spectrum
+# epsilonMLEupr:v	  Maximum Likelihood estimate of TKE dissipation rate (m2/s3) (v direction),  upper boundary of 95% confidence interval; based on unfiltered spectrum
 # epsilonMLEupr:w1	Maximum Likelihood estimate of TKE dissipation rate (m2/s3) (w1 direction),  upper boundary of 95% confidence interval; based on unfiltered spectrum
 # epsilonMLEupr:w2	Maximum Likelihood estimate of TKE dissipation rate (m2/s3) (w2 direction),  upper boundary of 95% confidence interval; based on unfiltered spectrum
-# realr2:u		Coefficient of determination of maximum likelihood predicted vs. observed spectrum (u direction), based on unfiltered spectrum
-# realr2:v		Coefficient of determination of maximum likelihood predicted vs. observed spectrum (v direction), based on unfiltered spectrum
-# realr2:w1		Coefficient of determination of maximum likelihood predicted vs. observed spectrum (w1 direction), based on unfiltered spectrum
-# realr2:w2		Coefficient of determination of maximum likelihood predicted vs. observed spectrum (w2 direction), based on unfiltered spectrum
-# MAD:u			Maximum absolute deviation of maximum likelihood predicted vs. observed spectrum (u direction), based on unfiltered spectrum
-# MAD:v			Maximum absolute deviation of maximum likelihood predicted vs. observed spectrum (v direction), based on unfiltered spectrum
-# MAD:w1		Maximum absolute deviation of maximum likelihood predicted vs. observed spectrum (w1 direction), based on unfiltered spectrum
-# MAD:w2		Maximum absolute deviation of maximum likelihood predicted vs. observed spectrum (w2 direction), based on unfiltered spectrum
-# lower.k:u		selected lower wave number threshold (rad/m) for inertial subrange (u direction), based on unfiltered spectrum
-# lower.k:v		selected lower wave number threshold (rad/m) for inertial subrange (v direction), based on unfiltered spectrum
-# lower.k:w1		selected lower wave number threshold (rad/m) for inertial subrange (w1 direction), based on unfiltered spectrum
-# lower.k:w2		selected lower wave number threshold (rad/m) for inertial subrange (w2 direction), based on unfiltered spectrum
-# upper.k:u		selected upper wave number threshold (rad/m) for inertial subrange (u direction), based on unfiltered spectrum
-# upper.k:v		selected upper wave number threshold (rad/m) for inertial subrange (v direction), based on unfiltered spectrum
-# upper.k:w1		selected upper wave number threshold (rad/m) for inertial subrange (w1 direction), based on unfiltered spectrum
-# upper.k:w2		selected upper wave number threshold (rad/m) for inertial subrange (w2 direction), based on unfiltered spectrum
-# f:u			frequency associated with kolmogorov scale (above which spectrum shows noise) (u direction), based on unfiltered spectrum
-# f:v			frequency associated with kolmogorov scale (above which spectrum shows noise) (v direction), based on unfiltered spectrum
-# f:w1			frequency associated with kolmogorov scale (above which spectrum shows noise) (w1 direction), based on unfiltered spectrum
-# f:w2			frequency associated with kolmogorov scale (above which spectrum shows noise) (w2 direction), based on unfiltered spectrum
-# decade:u		Ratio in power spectral density between upper and lower boundary of inertial subrange (u direction), based on unfiltered spectrum, 10 means the ratio is > 10; if ratio < 10, the number indicated shows the ratiom based on unfiltered spectrum
-# decade:v		Ratio in power spectral density between upper and lower boundary of inertial subrange (v direction), based on unfiltered spectrum, 10 means the ratio is > 10; if ratio < 10, the number indicated shows the ratio
-# decade:w1		Ratio in power spectral density between upper and lower boundary of inertial subrange (w1 direction), based on unfiltered spectrum, 10 means the ratio is > 10; if ratio < 10, the number indicated shows the ratio
-# decade:w2		Ratio in power spectral density between upper and lower boundary of inertial subrange (w2 direction), based on unfiltered spectrum, 10 means the ratio is > 10; if ratio < 10, the number indicated shows the ratio
-# k600.u		k600 (m/d), based on velocity time series in u direction; based on unfiltered spectrum
-# k600.v		k600 (m/d), based on velocity time series in v direction; based on unfiltered spectrum
-# k600.w1		k600 (m/d), based on velocity time series in w1 direction; based on unfiltered spectrum
-# k600.w2		k600 (m/d), based on velocity time series in w2 direction; based on unfiltered spectrum
+# realr2:u		      Coefficient of determination of maximum likelihood predicted vs. observed spectrum (u direction), based on unfiltered spectrum
+# realr2:v		      Coefficient of determination of maximum likelihood predicted vs. observed spectrum (v direction), based on unfiltered spectrum
+# realr2:w1		      Coefficient of determination of maximum likelihood predicted vs. observed spectrum (w1 direction), based on unfiltered spectrum
+# realr2:w2		      Coefficient of determination of maximum likelihood predicted vs. observed spectrum (w2 direction), based on unfiltered spectrum
+# MAD:u			        Maximum absolute deviation of maximum likelihood predicted vs. observed spectrum (u direction), based on unfiltered spectrum
+# MAD:v			        Maximum absolute deviation of maximum likelihood predicted vs. observed spectrum (v direction), based on unfiltered spectrum
+# MAD:w1		        Maximum absolute deviation of maximum likelihood predicted vs. observed spectrum (w1 direction), based on unfiltered spectrum
+# MAD:w2		        Maximum absolute deviation of maximum likelihood predicted vs. observed spectrum (w2 direction), based on unfiltered spectrum
+# lower.k:u   		  selected lower wave number threshold (rad/m) for inertial subrange (u direction), based on unfiltered spectrum
+# lower.k:v		      selected lower wave number threshold (rad/m) for inertial subrange (v direction), based on unfiltered spectrum
+# lower.k:w1	    	selected lower wave number threshold (rad/m) for inertial subrange (w1 direction), based on unfiltered spectrum
+# lower.k:w2	    	selected lower wave number threshold (rad/m) for inertial subrange (w2 direction), based on unfiltered spectrum
+# upper.k:u		      selected upper wave number threshold (rad/m) for inertial subrange (u direction), based on unfiltered spectrum
+# upper.k:v		      selected upper wave number threshold (rad/m) for inertial subrange (v direction), based on unfiltered spectrum
+# upper.k:w1    		selected upper wave number threshold (rad/m) for inertial subrange (w1 direction), based on unfiltered spectrum
+# upper.k:w2		    selected upper wave number threshold (rad/m) for inertial subrange (w2 direction), based on unfiltered spectrum
+# f:u		      	    frequency associated with kolmogorov scale (above which spectrum shows noise) (u direction), based on unfiltered spectrum
+# f:v		          	frequency associated with kolmogorov scale (above which spectrum shows noise) (v direction), based on unfiltered spectrum
+# f:w1	  	  	    frequency associated with kolmogorov scale (above which spectrum shows noise) (w1 direction), based on unfiltered spectrum
+# f:w2		    	    frequency associated with kolmogorov scale (above which spectrum shows noise) (w2 direction), based on unfiltered spectrum
+# decade:u	  	    Ratio in power spectral density between upper and lower boundary of inertial subrange (u direction), based on unfiltered spectrum, 10 means the ratio is > 10; if ratio < 10, the number indicated shows the ratiom based on unfiltered spectrum
+# decade:v		      Ratio in power spectral density between upper and lower boundary of inertial subrange (v direction), based on unfiltered spectrum, 10 means the ratio is > 10; if ratio < 10, the number indicated shows the ratio
+# decade:w1		      Ratio in power spectral density between upper and lower boundary of inertial subrange (w1 direction), based on unfiltered spectrum, 10 means the ratio is > 10; if ratio < 10, the number indicated shows the ratio
+# decade:w2		      Ratio in power spectral density between upper and lower boundary of inertial subrange (w2 direction), based on unfiltered spectrum, 10 means the ratio is > 10; if ratio < 10, the number indicated shows the ratio
+# k600.u		        k600 (m/d), based on velocity time series in u direction; based on unfiltered spectrum
+# k600.v		        k600 (m/d), based on velocity time series in v direction; based on unfiltered spectrum
+# k600.w1		        k600 (m/d), based on velocity time series in w1 direction; based on unfiltered spectrum
+# k600.w2		        k600 (m/d), based on velocity time series in w2 direction; based on unfiltered spectrum
 
 ###############################################################################################################
 
@@ -176,7 +176,7 @@ position_data$roll <- 45
 ## set directory to folder with ADV files
 ###############################################
  
-setwd("C:/MARCUS/WORK/Applications/Aquacosm_TA/Data/ADV/")
+setwd("~/Applications/epsilon_code/CalculateEpsilon/")
 folder.nm <- getwd()
 
 ################################################################################################
@@ -274,7 +274,7 @@ load_adv <- function(file.nm, folder.nm){
 
 
 fit_epsilon <- function(dataset,freq=200, WaterDepth=WaterDepth, SensorDepth=SensorDepth,SamplingVolume=SamplingVolume,
-diagnostic = FALSE,alpha=1.5*18/55*c(1,1.33,1.33,1.33),filt=TRUE,n=12,fmax=50){
+          diagnostic=FALSE, alpha=1.5*18/55*c(1,1.33,1.33,1.33), filt=TRUE, n=12, fmax=50){
   
   ## select flow components
   u <- dataset[,1]
@@ -500,7 +500,7 @@ decade[h] <- decade.s[id,h]
 
 ## plot spectra for all ENU directions
 
-  if (diagnostic){
+  if (diagnostic==TRUE){
     
     dev.new(width=8, height=8)
     layout(matrix(c(1:1), 1, 1, byrow = TRUE))
@@ -988,12 +988,12 @@ names(output0)[c(1:16)] <- c("filename","DataTime","VelocityRange","TransmitLeng
 output <- rbind(output,output0)
 
 # save updated model output dataframe
-write.csv(output, file="Results/output.csv")
+write.csv(output, file="~/Applications/epsilon_code/CalculateEpsilon/Results/output.csv")
 
 } ## close i loop (through different experiments)
 
 ## read output file
-output <- read.table("output.txt", header=TRUE,sep = "\t")
+output <- read.table("~/Applications/epsilon_code/CalculateEpsilon/Results/output.csv", header=TRUE,sep = "\t")
 
 
 ###############################################################
